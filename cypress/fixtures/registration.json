@@ -1,6 +1,8 @@
 {"main_url": "https://dev.profteam.su/",
-  "none_existent_login": "test252test",
-  "login": "Данил",
-  "none_existent_password":"Test",
-  "password": "EfNvedsZiAuxF8n"
+  "none_existent_login_register": "Данил",
+  "login_register": "Sijed",
+  "none_existent_password_register":"Test",
+  "password_register": "EfNvedsZiAuxF8n",
+  "email_register": "Danilcarol56@gmail.com",
+  "none_existent_email_register" : "dsadsa"
 }
