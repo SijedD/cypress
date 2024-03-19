@@ -90,7 +90,7 @@ describe('existent authorization', () => {
   })
 })
 
-describe('None-existent registration login', () => {
+describe('None-existent registration ', () => {
   it('None-existent login test', () =>{
     cy.fixture('registration').then(data => {
       cy.log('Переход на страницу регистрации')
@@ -107,9 +107,7 @@ describe('None-existent registration login', () => {
       cy.wait(3000)
     })
   })
-})
 
-describe('None-existent registration email', () => {
   it('None-existent email test', () =>{
     cy.fixture('registration').then(data => {
       cy.log('Переход на страницу регистрации')
@@ -126,9 +124,7 @@ describe('None-existent registration email', () => {
       cy.wait(3000)
     })
   })
-})
 
-describe('None-existent registration password', () => {
   it('None-existent password test', () =>{
     cy.fixture('registration').then(data => {
       cy.log('Переход на страницу регистрации')
@@ -181,3 +177,38 @@ describe('existent registration', () => {
     })
   })
 })
+
+describe('notifications', () => {
+  it('login + notifications', () =>{
+    cy.fixture('cypressTest').then(data => {
+      cy.log('Переход на страницу авторизации')
+      cy.visit(data.main_url + 'login/')
+
+      cy.log('Ввод существующего логина')
+      cy.get('input[class="form-input--text form-input"]')
+          .type(data.login)
+
+      cy.log('Ввод существующего пароля')
+      cy.get('input[class="form-input--password form-input"]')
+          .type(data.password)
+
+      cy.log('Клик по кнопке "Войти"')
+      cy.get('.button__background-color-green').click()
+
+      cy.wait(1000)
+
+      cy.contains('Уведомления').click();
+
+      cy.get('.notifications-list').should('exist');
+
+      cy.get('.link--size-small').should('exist');
+
+      cy.contains('Прочитать все').click();
+
+      cy.get('.notification-list-item--unread').should('not.exist');
+    })
+  })
+})
+
+
+
