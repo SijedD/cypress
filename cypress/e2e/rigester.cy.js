@@ -56,7 +56,7 @@ describe('None-existent registration ', () => {
 })
 
 describe('existent registration', () => {
-    it('None-existent email test', () =>{
+    it('existent registration', () =>{
         cy.fixture('registration').then(data => {
             cy.log('Переход на страницу регистрации')
             cy.visit(data.main_url + 'registration/')
